@@ -143,10 +143,11 @@ void loop() {
 
     // Turn on ventilator if it's too humid and dark.
     // And then turn off ventilator only when humidity drops below thresshold.
+    // Turned relay the other way arround, mistake in prototype...
     if ((DHT.humidity > 85) && (ldrValue < 50)) {
-      digitalWrite(relayPin, HIGH); // turn on relay with voltage HIGH
+      digitalWrite(relayPin, LOW); // turn off relay with voltage LOW
     } else {
-      digitalWrite(relayPin, LOW);  // turn off relay with voltage LOW
+      digitalWrite(relayPin, HIGH);  // turn on relay with voltage HIGH
     }
 
     delay(5000); // wait for 5 seconds before refreshing.
